@@ -1,8 +1,7 @@
 resource "page" "task1" {
-  title = "Task 1 - Provision and Use Tools"
+  title = "Task 1 - Create a File"
   file  = "instructions/task1.md"
   activities = {
-    use_tree = resource.task.use_tree
-    use_jq   = resource.task.use_jq
+    make_file = resource.task.make_file
   }
 }
