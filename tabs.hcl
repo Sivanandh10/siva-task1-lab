@@ -9,7 +9,3 @@ resource "editor" "code" {
     target    = resource.container.webserver
   }
 }
-
-resource "note" "reference" {
-  file = "notes/reference.md"
-}

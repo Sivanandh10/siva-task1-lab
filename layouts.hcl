@@ -14,9 +14,5 @@ resource "layout" "two_column" {
       title  = "HTML Editor"
       target = resource.editor.code
     }
-    tab "reference" {
-      title  = "Reference"
-      target = resource.note.reference
-    }
   }
 }

@@ -1,10 +1,22 @@
-# Chapter 2 - Customize the Site
+# Chapter 2 - Customize the Homepage
 
-> The Mission Control homepage is waiting for an agent. Identify yourself.
+> The server is live. Now make it yours.
 
-## Edit the homepage
+---
 
-The nginx image does not include nano. Use cat to write the file directly:
+## Step 1 — View the current homepage
+
+In the **Terminal**, run:
+
+    curl localhost
+
+You will see the raw HTML of the current page. Then click the **HTML Editor** tab — find index.html in the file tree and click it to see the file with syntax highlighting.
+
+---
+
+## Step 2 — Edit the homepage
+
+In the **Terminal**, overwrite the homepage with your own version:
 
     cat > /usr/share/nginx/html/index.html << 'EOF'
     <!DOCTYPE html>
@@ -21,9 +33,15 @@ The nginx image does not include nano. Use cat to write the file directly:
     </body></html>
     EOF
 
-Confirm it worked:
+---
+
+## Step 3 — Verify your change
+
+Confirm nginx is serving your new content:
 
     curl localhost | grep Agent
+
+You should see <p>Agent: Siva</p>. Also click the **HTML Editor** tab and refresh — your updated index.html will show the new content.
 
 Then click **Check**.
 
