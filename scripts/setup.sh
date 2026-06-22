@@ -14,5 +14,3 @@ p{color:#ccc;font-size:1.1em;}</style>
 <p>Customize this page to complete your mission.</p>
 </body></html>
 HTMLEOF
-nginx -g 'daemon off;' &
-sleep 2
