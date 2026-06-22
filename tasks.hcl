@@ -1,37 +1,37 @@
-resource "task" "verify_setup" {
-  description = "Verify the setup script provisioned the project"
-
-  config {
-    target = resource.container.workstation
-  }
-
-  condition "setup_done" {
-    description = "Verify the setup script provisioned the project"
-
-    setup {
-      script = "scripts/setup.sh"
-    }
-
+resource "task" "check_nginx" {
+  description = "Confirm nginx is running"
+  config { target = resource.container.webserver }
+  condition "running" {
+    description = "Confirm nginx is running"
+    setup { script = "scripts/setup.sh" }
     check {
-      script          = "scripts/check_setup.sh"
-      failure_message = "Setup not detected. Check it with: ls -R /root/project"
+      script          = "scripts/check_nginx.sh"
+      failure_message = "Run: curl localhost and check the response"
     }
   }
 }
 
-resource "task" "find_name" {
-  description = "Read the project name from the terminal"
-
-  config {
-    target = resource.container.workstation
-  }
-
-  condition "found" {
-    description = "Read the project name from the terminal"
-
+resource "task" "edit_homepage" {
+  description = "Add your name to the homepage"
+  config { target = resource.container.webserver }
+  condition "edited" {
+    description = "Add your name to the homepage"
     check {
-      script          = "scripts/check_name.sh"
-      failure_message = "Run: grep name /root/project/info.txt > /root/name.txt"
+      script          = "scripts/check_homepage.sh"
+      failure_message = "Add 'Agent: Siva' to /usr/share/nginx/html/index.html"
+    }
+  }
+}
+
+resource "task" "add_status" {
+  description = "Create a /status page"
+  success_message = "Outstanding work, Agent. Mission complete."
+  config { target = resource.container.webserver }
+  condition "status_exists" {
+    description = "Create a /status page"
+    check {
+      script          = "scripts/check_status.sh"
+      failure_message = "Create /usr/share/nginx/html/status.html with 'STATUS: ONLINE'"
     }
   }
 }

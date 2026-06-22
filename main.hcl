@@ -1,13 +1,34 @@
 resource "lab" "main" {
-  title       = "Siva's Task 1 Lab"
-  description = "Task 1: a setup script installs jq and tree, then you use them in the terminal."
+  title       = "Web Server Mission Control"
+  description = "A live nginx web server is running. Use the Terminal to customize it and watch your changes appear instantly in the Service tab."
   layout      = resource.layout.two_column
 
+  settings {
+    timelimit {
+      duration   = "45m"
+      show_timer = true
+    }
+  }
+
   content {
-    chapter "task1" {
-      title = "Task 1"
-      page "task1" {
-        reference = resource.page.task1
+    chapter "overview" {
+      title = "Chapter 1 - Overview"
+      page "overview" {
+        reference = resource.page.overview
+      }
+    }
+
+    chapter "customize" {
+      title = "Chapter 2 - Customize the Site"
+      page "customize" {
+        reference = resource.page.customize
+      }
+    }
+
+    chapter "status" {
+      title = "Chapter 3 - Add a Status Page"
+      page "status" {
+        reference = resource.page.status
       }
     }
   }
