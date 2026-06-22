@@ -4,10 +4,7 @@
 
 ## Create the status page
 
-    nano /usr/share/nginx/html/status.html
-
-Paste this content:
-
+    cat > /usr/share/nginx/html/status.html << 'EOF'
     <!DOCTYPE html>
     <html>
     <head><title>Status</title>
@@ -18,11 +15,12 @@ Paste this content:
     <p>All systems operational.</p>
     </body>
     </html>
+    EOF
 
-Save with Ctrl+X, Y, Enter. Then visit it:
+Confirm it:
 
     curl localhost/status.html
 
-Click the **Live Site** tab and go to /status.html in the URL bar to see it live. Then click **Check**.
+Then click **Check**.
 
 <instruqt-task id="add_status"></instruqt-task>
