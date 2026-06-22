@@ -1,17 +1,20 @@
-# Task 1 - Explore the Project
+# Task 1 - Setup and Verify
 
-When the lab started, a **setup script** created a sample project at
-/root/project (no internet needed). Use the terminal to explore it.
+A **setup script** ran when the lab started. It created a sample project
+at /root/project using base tools only - no internet needed.
 
-## 1. List the project files
+## 1. Confirm the setup completed
 
-    ls -R /root/project > /root/listing.txt
+See what the setup created:
 
-Then click **Check**.
+    ls -R /root/project
+    cat /root/project/info.txt
 
-<instruqt-task id="list_project"></instruqt-task>
+You should see the files and "name: instruqt-lab". Then click **Check**.
 
-## 2. Find the project name
+<instruqt-task id="verify_setup"></instruqt-task>
+
+## 2. Read the project name
 
     grep name /root/project/info.txt > /root/name.txt
 

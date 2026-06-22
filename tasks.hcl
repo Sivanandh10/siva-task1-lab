@@ -1,33 +1,33 @@
-resource "task" "list_project" {
-  description = "List the project files"
+resource "task" "verify_setup" {
+  description = "Verify the setup script provisioned the project"
 
   config {
     target = resource.container.workstation
   }
 
-  condition "listed" {
-    description = "List the project files"
+  condition "setup_done" {
+    description = "Verify the setup script provisioned the project"
 
     setup {
       script = "scripts/setup.sh"
     }
 
     check {
-      script          = "scripts/check_listing.sh"
-      failure_message = "Run: ls -R /root/project > /root/listing.txt"
+      script          = "scripts/check_setup.sh"
+      failure_message = "Setup not detected. Check it with: ls -R /root/project"
     }
   }
 }
 
 resource "task" "find_name" {
-  description = "Find the project name"
+  description = "Read the project name from the terminal"
 
   config {
     target = resource.container.workstation
   }
 
   condition "found" {
-    description = "Find the project name"
+    description = "Read the project name from the terminal"
 
     check {
       script          = "scripts/check_name.sh"

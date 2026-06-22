@@ -1,8 +1,8 @@
 resource "page" "task1" {
-  title = "Task 1 - Explore the Project"
+  title = "Task 1 - Setup and Verify"
   file  = "instructions/task1.md"
   activities = {
-    list_project = resource.task.list_project
+    verify_setup = resource.task.verify_setup
     find_name    = resource.task.find_name
   }
 }
