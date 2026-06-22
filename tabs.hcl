@@ -1,10 +1,15 @@
-resource "service" "webserver" {
-  target = resource.container.webserver
-  port   = 80
-  scheme = "http"
-}
-
 resource "terminal" "shell" {
   target = resource.container.webserver
   shell  = "/bin/bash"
+}
+
+resource "editor" "code" {
+  workspace "html" {
+    directory = "/usr/share/nginx/html"
+    target    = resource.container.webserver
+  }
+}
+
+resource "note" "reference" {
+  file = "notes/reference.md"
 }
